@@ -5,7 +5,7 @@ import Router from 'vue-router'
 const TheContainer = () => import('@/containers/TheContainer')
 
 // Views
-const Dashboard = () => import('@/views/Dashboard')
+const Welcome = () => import('@/views/Welcome')
 
 const Colors = () => import('@/views/theme/Colors')
 const Typography = () => import('@/views/theme/Typography')
@@ -53,9 +53,9 @@ const Page500 = () => import('@/views/pages/Page500')
 const Login = () => import('@/views/pages/Login')
 const Register = () => import('@/views/pages/Register')
 
-// Users
-const Users = () => import('@/views/users/Users')
-const User = () => import('@/views/users/User')
+// Appointment
+const Appointments = () => import('@/views/appointment/Appointments')
+const Appointment = () => import('@/views/appointment/Appointment')
 
 Vue.use(Router)
 
@@ -70,14 +70,14 @@ function configRoutes () {
   return [
     {
       path: '/',
-      redirect: '/dashboard',
+      redirect: '/welcome',
       name: 'Home',
       component: TheContainer,
       children: [
         {
-          path: 'dashboard',
-          name: 'Dashboard',
-          component: Dashboard
+          path: 'welcome',
+          name: 'Welcome',
+          component: Welcome
         },
         {
           path: 'theme',
@@ -110,9 +110,9 @@ function configRoutes () {
           component: Widgets
         },
         {
-          path: 'users',
+          path: 'appointments',
           meta: {
-            label: 'Users'
+            label: 'Appointments'
           },
           component: {
             render(c) {
@@ -122,16 +122,16 @@ function configRoutes () {
           children: [
             {
               path: '',
-              name: 'Users',
-              component: Users
+              name: 'Appointments',
+              component: Appointments
             },
             {
               path: ':id',
               meta: {
-                label: 'User Details'
+                label: 'Appointment Details'
               },
-              name: 'User',
-              component: User
+              name: 'Appointment',
+              component: Appointment
             }
           ]
         },
